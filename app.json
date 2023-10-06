@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "test",
+    "slug": "test",
+    "version": "1.0.0",
+    "assetBundlePatterns": ["**/*"],
+    "extra": {
+      "eas": {
+        "projectId": "1b7f2534-514c-4dc7-9395-901dbed43310"
+      }
+    }
+  },
+  "android": {
+    "package": "com.peace.mg",
+    "config": {
+      "googleMaps": { "apiKey": "AIzaSyA2OOtJLZttH5CGoQ5eTibgvh3LyTQGLPU" }
+    }
+  }
+}
