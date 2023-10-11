@@ -26,7 +26,8 @@
     "react-native-maps": "1.7.1",
     "expo-dev-client": "~2.4.11",
     "expo-location": "^16.3.0",
-    "expo-splash-screen": "~0.20.5"
+    "expo-splash-screen": "~0.20.5",
+    "@expo/webpack-config": "^19.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

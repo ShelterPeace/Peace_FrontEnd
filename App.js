@@ -14,6 +14,7 @@ export default function App() {
     async function loadFonts() {
       await Font.loadAsync({
         YourFontName: require('./assets/fonts/IBMPlexSansKR-SemiBold.ttf'), // 경로와 파일명 변경
+        //메인
       });
 
       setFontLoaded(true);

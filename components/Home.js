@@ -20,6 +20,7 @@ export default function HomeScreen({ navigation }) {
   const pagerRef = React.useRef(0); // PagerView에 대한 참조 생성
   const statusBarHeight =
     Platform.OS === 'android' ? StatusBar.currentHeight : 0;
+  //수정
   const newsArticles = [
     {
       image:
