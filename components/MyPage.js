@@ -10,11 +10,11 @@ import {
     SafeAreaView
 } from 'react-native';
 
-export default function Settings({navigation}) {
+export default function MyPage({navigation}) {
     return (
         <View style={styles.container}>
             <View style={styles.container_in}>
-                <Text>알림</Text>
+                <Text>마이페이지</Text>
             </View>
         </View>
     );
