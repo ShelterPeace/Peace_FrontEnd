@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
-import FooterComponent from '../uicomponents/FooterComponent';
 
-export default function MychatScreen({ navigation }) {
+export default function MychatScreen({navigation}) {
   const [region, setRegion] = useState({
     latitude: 37.78825,
     longitude: -122.4324,
@@ -41,7 +40,6 @@ export default function MychatScreen({ navigation }) {
           pinColor='black'
         />
       </MapView>
-      <FooterComponent navigation={navigation}></FooterComponent>
     </>
   );
 }
