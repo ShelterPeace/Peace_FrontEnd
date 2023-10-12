@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Image, View, Text, StyleSheet, Animated} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import {useNavigationState} from "@react-navigation/native";
 import MychatScreen from "../components/Map";
@@ -11,33 +11,40 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 
 const Tab = createBottomTabNavigator();
 
-export default function FooterComponent() {
+export default function FooterComponent({safeAreaView}) {
     const routeState = useNavigationState(state => state); // 현재 선택 중인 navigation
+    const [isTitle, setIsTitle] = useState(false); //타이블 보이기/숨기기
 
-    let title;
-    if (routeState !== undefined) {
-        const routeName = routeState.routes[routeState.index]?.name;
-        switch (routeName) {
-            case 'Home':
-                title = '모아보기';
-                break;
-            case 'MychatScreen':
-                title = '지도';
-                break;
-            case 'MychatScreen2':
-                title = '밀집도';
-                break;
-            case 'MyPage':
-                title = '마이페이지';
-                break;
-            case 'Settings':
-                title = '설정';
-                break;
+    useEffect(() => {
+        if (routeState !== undefined) {
+            const routeName = routeState.routes[routeState.index]?.name;
+            switch (routeName) {
+                case 'Home':
+                    setIsTitle(true);
+                    safeAreaView(false, true);
+                    break;
+                case 'MychatScreen':
+                    setIsTitle(false);
+                    safeAreaView(true, false);
+                    break;
+                case 'MychatScreen2':
+                    setIsTitle(false);
+                    safeAreaView(true, false);
+                    break;
+                case 'MyPage':
+                    setIsTitle(false);
+                    safeAreaView(false, false);
+                    break;
+                case 'Settings':
+                    setIsTitle(false);
+                    safeAreaView(false, false);
+                    break;
+            }
+        } else {
+            // 초기 라우트 이름이 undefined일 때의 처리
+            setIsTitle(true);
         }
-    } else {
-        // 초기 라우트 이름이 undefined일 때의 처리
-        title = '모아보기';
-    }
+    }, [routeState]);
 
     const dynamicStyle = StyleSheet.create({
         content_title: {
@@ -46,8 +53,8 @@ export default function FooterComponent() {
             backgroundColor: '#ffb931',
             alignItems: 'center',
             justifyContent: 'flex-start',
-            borderBottomLeftRadius: title === "모아보기" ? 20 : 0,
-            borderBottomRightRadius: title === "모아보기" ? 20 : 0,
+            borderBottomLeftRadius: 20,
+            borderBottomRightRadius: 20,
 
             shadowColor: '#969696',
             shadowOffset: {width: 0, height: 7},
@@ -60,15 +67,18 @@ export default function FooterComponent() {
 
     return (
         <View style={styles.content_title_back}>
-            <View style={dynamicStyle.content_title}>
-                <Text style={styles.content_title_text}>{title}</Text>
-            </View>
+            {isTitle && <View style={dynamicStyle.content_title}>
+                <Image style={styles.logo}
+                                source={require('../assets/img/logo_black_only_text.png')} resizeMode="contain" />
+            </View>}
             <Tab.Navigator
                 initialRouteName="Home"
                 screenOptions={{
                     tabBarActiveTintColor: 'black',
                     tabBarInactiveTintColor: 'gray',
                     tabBarStyle: {
+                        position:"absolute",
+                        bottom:0,
                         backgroundColor: '#fff',
                         paddingTop: 10,
                         borderTopLeftRadius: 20,
@@ -149,10 +159,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#eaeaea',
     },
-    content_title_text: {
-        fontSize: 28,
-        marginLeft: 20,
-        fontFamily: 'YourFontName',
-        color: 'black',
-    },
+    logo:{
+        width:80,
+        height:20,
+        marginTop:8,
+    }
 });
