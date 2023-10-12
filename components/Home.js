@@ -5,15 +5,18 @@ import {
     StyleSheet,
     Image,
     ScrollView,
-    SafeAreaView, Button
+    SafeAreaView,
+    Button,
+    Animated,
 } from 'react-native';
 import {Ionicons, Feather, MaterialIcons, Entypo} from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {StatusBar} from 'expo-status-bar';
 import PagerView from 'react-native-pager-view';
-import React, {useState, useLayoutEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 
-export default function HomeScreen({navigation}) {
+export default function HomeScreen({style = {}}) {
+    const [fadeAnim] = useState(new Animated.Value(0))  // Home 초기 상태
     const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 인덱스 상태
     const [isHalfScrolled, setIsHalfScrolled] = useState(false); // offset이 0.5를 넘었는지 여부
     const [isHalfScrolled2, setIsHalfScrolled2] = useState(false); // offset이 0.5를 넘었는지 여부
@@ -51,8 +54,21 @@ export default function HomeScreen({navigation}) {
             date: '2023-10-04 14:57',
         },
     ];
+
+    useEffect(() => {
+        Animated.timing(
+            fadeAnim,
+            {
+                toValue: 1, // 최종 상태: 완전 불투명
+                duration: 250, // 전환 시간: 2초
+                useNativeDriver: true,
+            }
+        ).start();
+    }, []);
+
     return (
-        <View style={styles.container_in}>
+        // <Animated.View style={styles.container_in}>
+        <Animated.View style={[{...style, opacity: fadeAnim}, styles.container_in]}>
             <View style={styles.content}>
                 <ScrollView
                     bounces={true}
@@ -386,7 +402,7 @@ export default function HomeScreen({navigation}) {
                 </ScrollView>
                 <StatusBar style="auto"/>
             </View>
-        </View>
+        </Animated.View>
     );
 }
 
