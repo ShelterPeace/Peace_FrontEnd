@@ -574,7 +574,7 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     content_div_1_2_weather_1: {
-        width: '100%%',
+        width: '100%',
         height: '100%',
         backgroundColor: '#f3f3f3',
         borderRadius: 10,

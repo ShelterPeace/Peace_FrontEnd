@@ -4,12 +4,7 @@ import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 
 export default function MychatScreen({navigation}) {
-  const [region, setRegion] = useState({
-    latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-  });
+  const [region, setRegion] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -21,12 +16,17 @@ export default function MychatScreen({navigation}) {
 
       let location = await Location.getCurrentPositionAsync({});
       setRegion({
-        ...region,
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
       });
     })();
   }, []);
+
+  if (!region) {
+    return null; // 혹은 로딩 스크린을 표시할 수 있습니다.
+  }
 
   return (
     <>
