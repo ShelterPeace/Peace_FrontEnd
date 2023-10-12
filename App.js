@@ -1,5 +1,5 @@
 import {NavigationContainer} from '@react-navigation/native';
-import Footer from './uicomponents/Footer';
+import Footer from './uicomponents/Header_Footer';
 import Loading from './components/Loading';
 import * as Font from 'expo-font';
 import React, {useState, useEffect, Fragment} from 'react';
@@ -9,6 +9,8 @@ export default function App({style = {}}) {
     const [isLoadingAnimation, setIsLoadingAnimation] = useState(false); //로딩 화면 상태 변수
     const [isLoading, setIsLoading] = useState(true); //로딩 화면 상태 변수
     const [fontLoaded, setFontLoaded] = useState(false); //폰트 불러오기 상태 변수
+    const [safeAreaViewNo, setSafeAreaViewNo] = useState(false);
+    const [safeAreaViewColor, setSafeAreaViewColor] = useState(false);
 
     useEffect(() => {
         async function loadFonts() {
@@ -26,33 +28,63 @@ export default function App({style = {}}) {
 
             setTimeout(() => {
                 setIsLoading(false);
-            }, 250);
+            }, 150);
         }, 2000);
 
     }, []);
+
+    function SetsafeAreaViewNo(safeAreaView, safeAreaColor) {
+        setSafeAreaViewNo(safeAreaView);
+        setSafeAreaViewColor(safeAreaColor);
+    }
 
 
     if (!fontLoaded || isLoading) {
         return <Loading isLoadingAnimation={isLoadingAnimation}/>; // 만약 폰트가 아직 로드되지 않았거나 초기 로딩 중이라면 Loading화면 출력
     }
 
+    const dynamicStyle = StyleSheet.create({
+        container_top: {
+            flex: 0,
+            backgroundColor: safeAreaViewColor ?'#ffb931':'#eaeaea',
+        },
+    });
+
     return (
         <Fragment>
-            <SafeAreaView style={styles.container_top}/>
-            <SafeAreaView style={styles.container_bottom}>
-                <NavigationContainer>
-                    <Footer/>
-                </NavigationContainer>
-            </SafeAreaView>
+            <NavigationContainer>
+            {!safeAreaViewNo && <SafeAreaView style={dynamicStyle.container_top}/>}
+            {!safeAreaViewNo ?
+                <>
+                    <SafeAreaView style={styles.container_bottom}>
+                            <Footer safeAreaView={SetsafeAreaViewNo}/>
+                    </SafeAreaView>
+                </>
+                :
+                <Footer safeAreaView={SetsafeAreaViewNo}/>
+            }
+            </NavigationContainer>
         </Fragment>
     );
 }
+// {/*{*/}
+// {/*    safeAreaViewNo ?*/}
+// {/*        <>*/}
+// {/*            <SafeAreaView style={styles.container_bottom}>*/}
+// {/*                <NavigationContainer>*/}
+// {/*                    <Footer safeAreaView={SetsafeAreaViewNo}/>*/}
+// {/*                </NavigationContainer>*/}
+// {/*            </SafeAreaView>*/}
+// {/*        </>*/}
+// {/*        :*/}
+// {/*        <>*/}
+// {/*            <NavigationContainer>*/}
+// {/*                <Footer safeAreaView={SetsafeAreaViewNo}/>*/}
+// {/*            </NavigationContainer>*/}
+// {/*        </>*/}
+// {/*}
 
 const styles = StyleSheet.create({
-    container_top: {
-        flex: 0,
-        backgroundColor: '#ffb931',
-    },
     container_bottom: {
         flex: 1,
         backgroundColor: 'white',

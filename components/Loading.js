@@ -1,8 +1,20 @@
-import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Animated } from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import { Image, View, Text, StyleSheet, Animated } from 'react-native';
 
 export default function Loading({ isLoadingAnimation }) {
-    const fadeAnim = useRef(new Animated.Value(1)).current; // 초기 opacity 값: 1
+    const [fadeAnim] = useState(new Animated.Value(1))  // Home 초기 상태
+    const [fadeAnimLogo] = useState(new Animated.Value(0))  // Home 초기 상태
+
+    useEffect(() => {
+    Animated.timing(
+        fadeAnimLogo,
+        {
+            toValue: 1, // 최종 opacity 값: 0 (완전 투명)
+            duration: 500, // 전환 시간: 2초
+            useNativeDriver: true,
+        }
+    ).start();
+    }, []);
 
     useEffect(() => {
         if (isLoadingAnimation) { // 로딩이 끝나면 실행
@@ -10,7 +22,7 @@ export default function Loading({ isLoadingAnimation }) {
                 fadeAnim,
                 {
                     toValue: 0, // 최종 opacity 값: 0 (완전 투명)
-                    duration: 250, // 전환 시간: 2초
+                    duration: 150, // 전환 시간: 2초
                     useNativeDriver: true,
                 }
             ).start();
@@ -19,7 +31,9 @@ export default function Loading({ isLoadingAnimation }) {
 
     return (
         <Animated.View style={[styles.container, {opacity: fadeAnim}]}>
-            <Text style={styles.title}>대피스</Text>
+            <Animated.Image style={[styles.logo, {opacity: fadeAnimLogo}]}
+                   source={require('../assets/img/logo_black.png')}/>
+            <Text style={styles.loading_text}>@bitfamily</Text>
         </Animated.View>
     );
 }
@@ -36,4 +50,13 @@ const styles = StyleSheet.create({
         fontSize: 70,
         fontWeight: '700',
     },
+    logo:{
+        width:135,
+        height:130,
+        borderRadius:10,
+    },
+    loading_text:{
+        position:'absolute',
+        bottom:60,
+    }
 })
