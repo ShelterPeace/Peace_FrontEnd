@@ -15,7 +15,7 @@ export default function App({style = {}}) {
     useEffect(() => {
         async function loadFonts() {
             await Font.loadAsync({
-                YourFontName: require('./assets/fonts/IBMPlexSansKR-SemiBold.ttf'), // 경로와 파일명 변경
+                mainFont: require('./assets/fonts/IBMPlexSansKR-SemiBold.ttf'), // 경로와 파일명 변경
             });
 
             setFontLoaded(true);
@@ -67,22 +67,6 @@ export default function App({style = {}}) {
         </Fragment>
     );
 }
-// {/*{*/}
-// {/*    safeAreaViewNo ?*/}
-// {/*        <>*/}
-// {/*            <SafeAreaView style={styles.container_bottom}>*/}
-// {/*                <NavigationContainer>*/}
-// {/*                    <Footer safeAreaView={SetsafeAreaViewNo}/>*/}
-// {/*                </NavigationContainer>*/}
-// {/*            </SafeAreaView>*/}
-// {/*        </>*/}
-// {/*        :*/}
-// {/*        <>*/}
-// {/*            <NavigationContainer>*/}
-// {/*                <Footer safeAreaView={SetsafeAreaViewNo}/>*/}
-// {/*            </NavigationContainer>*/}
-// {/*        </>*/}
-// {/*}
 
 const styles = StyleSheet.create({
     container_bottom: {

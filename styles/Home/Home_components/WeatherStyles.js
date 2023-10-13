@@ -10,7 +10,7 @@ export default StyleSheet.create({
     },
     content_div_1_2_weather_1_1_text: {
         fontSize: 15,
-        fontFamily: 'YourFontName',
+        fontFamily: 'mainFont',
         marginLeft: 15,
         color:"#3f3f3f"
     },
@@ -28,7 +28,7 @@ export default StyleSheet.create({
         position:"absolute",
         top:3,
         left:15,
-        fontFamily:"YourFontName",
+        fontFamily:"mainFont",
         fontSize:20,
         color:"#626262"
     },
@@ -36,7 +36,7 @@ export default StyleSheet.create({
         position:"absolute",
         bottom:10,
         right:10,
-        fontFamily:"YourFontName",
+        fontFamily:"mainFont",
         fontSize:14,
         color:"#626262"
     },

@@ -19,7 +19,7 @@ export default StyleSheet.create({
     content_div_1_2_title_text: {
         fontSize: 20,
         marginLeft: 3,
-        fontFamily: 'YourFontName',
+        fontFamily: 'mainFont',
         color: '#000000',
     },
     content_div_1_2_content: {
@@ -50,14 +50,14 @@ export default StyleSheet.create({
     content_div_1_2_content_1_1_1_text: {
         marginLeft: 15,
         fontSize: 12,
-        fontFamily: 'YourFontName'
+        fontFamily: 'mainFont'
     },
     content_div_1_2_content_1_1_1_text_M: {
         position: "absolute",
         top: -25,
         fontSize: 18,
         fontWeight: "bold",
-        fontFamily: 'YourFontName'
+        fontFamily: 'mainFont'
     },
     content_div_1_2_content_1_1_2: {
         flex: 1,
@@ -69,12 +69,12 @@ export default StyleSheet.create({
         paddingLeft: 10,
         paddingRight: 10,
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-start",
 
     },
     content_div_1_2_content_1_1_2_1_text: {
         fontSize: 18,
-        fontFamily: 'YourFontName',
+        fontFamily: 'mainFont',
     },
     content_div_1_2_content_1_1_2_2: {
         flex: 1,
@@ -116,10 +116,10 @@ export default StyleSheet.create({
     },
     content_div_1_2_content_2_1_1_1_text: {
         fontSize: 17,
-        fontFamily: 'YourFontName',
+        fontFamily: 'mainFont',
     },
     content_div_1_2_content_2_1_1_1_text2: {
         fontSize: 20,
-        fontFamily: 'YourFontName',
+        fontFamily: 'mainFont',
     },
 });
