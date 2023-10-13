@@ -19,7 +19,7 @@ export default function Shelter() {
                         </View>
                         <View style={styles.content_div_1_2_content_1_1_2}>
                             <View style={styles.content_div_1_2_content_1_1_2_1}>
-                                <Text style={styles.content_div_1_2_content_1_1_2_1_text}>강남역 2번 출구
+                                <Text style={styles.content_div_1_2_content_1_1_2_1_text} numberOfLines={1} ellipsizeMode='tail'>강남역 2번 출구
                                     AED
                                 </Text>
                             </View>
