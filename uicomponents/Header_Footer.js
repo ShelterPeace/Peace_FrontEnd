@@ -10,10 +10,42 @@ import Settings from "../components/Settings";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {createStackNavigator} from '@react-navigation/stack';
 import Notice from '../components/Settings_components/Notice';
+import Inquiry from "../components/Settings_components/Inquiry";
+import Shelter_Settings from "../components/Settings_components/Shelter_Settings";
+import AED_Settings from "../components/Settings_components/AED_Settings";
+import Fire_Settings from "../components/Settings_components/Fire_Settings";
+import Message_Settings from "../components/Settings_components/Message_Settings";
+import Interest_Place_Settings from "../components/Settings_components/Interest_Place_Settings";
 
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
+//공통 옵션 설정
+const commonOptions = {
+    headerShown: true,
+    headerStyle: {
+        backgroundColor: '#eaeaea',
+        borderStyle:'solid',
+        shadowColor: '#c2c2c2',
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 2,
+        elevation: 3,
+    },
+    headerTintColor: '#575757',
+    headerTitleStyle:{
+        fontFamily:'mainFont',
+    },
+    headerBackTitleStyle:{
+        fontSize:12,
+        fontFamily:'mainFont',
+    },
+    headerBackImage: () => <MaterialIcons name="navigate-before" style={styles.backIcon}/>,
+};
 
 function SettingsStack() {
     return (
@@ -21,32 +53,13 @@ function SettingsStack() {
             <Stack.Screen name="설정" component={Settings} options={{
                 headerShown: false
             }}/>
-            <Stack.Screen name="공지사항" component={Notice}
-                          options={{
-                              headerShown: true,
-                              headerStyle: {
-                                  backgroundColor: '#eaeaea',
-                                  borderStyle:'solid',
-                                  shadowColor: '#c2c2c2',
-                                  shadowOffset: {
-                                      width: 0,
-                                      height: 1, // 음수 값을 사용하면 그림자가 위로 올라감
-                                  },
-                                  shadowOpacity: 0.5, // CSS의 box-shadow에서 alpha 값에 해당
-                                  shadowRadius: 2, // blur radius에 해당
-                                  elevation: 3,
-                              },
-                              headerTintColor: '#575757',
-                              headerTitleStyle: {
-                                  fontFamily:'mainFont',
-                              },
-                              headerBackTitleStyle:{
-                                  fontSize:12,
-                                  fontFamily:'mainFont',
-                              },
-                              headerBackImage: () => <MaterialIcons name="navigate-before" style={styles.backIcon}/>,
-                          }}
-            />
+            <Stack.Screen name="공지사항" component={Notice} options={commonOptions}/>
+            <Stack.Screen name="문의사항" component={Inquiry} options={commonOptions}/>
+            <Stack.Screen name="대피소 알림 설정" component={Shelter_Settings} options={commonOptions}/>
+            <Stack.Screen name="AED 알림 설정" component={AED_Settings} options={commonOptions}/>
+            <Stack.Screen name="소화기 알림 설정" component={Fire_Settings} options={commonOptions}/>
+            <Stack.Screen name="재난 문자 필터링 설정" component={Message_Settings} options={commonOptions}/>
+            <Stack.Screen name="관심 지역 설정" component={Interest_Place_Settings} options={commonOptions}/>
         </Stack.Navigator>
     );
 }

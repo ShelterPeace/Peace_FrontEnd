@@ -6,6 +6,23 @@ export default StyleSheet.create({
         height: '100%',
         backgroundColor: '#eaeaea',
     },
+    settings_option_mypage_container: {
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        marginTop:20,
+        backgroundColor:"#ffffff",
+
+        shadowColor: '#000000',
+        shadowOffset: {
+            width: 0,
+            height:0,
+        },
+        shadowOpacity: 100,
+        shadowRadius: 5,
+        elevation: 3,
+        zIndex:2,
+    },
     container_in: {
         flex: 1,
         backgroundColor: '#eaeaea',
@@ -35,10 +52,10 @@ export default StyleSheet.create({
         shadowColor: '#c2c2c2',
         shadowOffset: {
             width: 0,
-            height: 0.5, // 음수 값을 사용하면 그림자가 위로 올라감
+            height: 0.5,
         },
-        shadowOpacity: 0.5, // CSS의 box-shadow에서 alpha 값에 해당
-        shadowRadius: 2, // blur radius에 해당
+        shadowOpacity: 0.5,
+        shadowRadius: 2,
         elevation: 3,
     },
     settings_option_menu: {
