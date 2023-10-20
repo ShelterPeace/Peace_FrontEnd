@@ -3,7 +3,7 @@ import Footer from './uicomponents/Header_Footer';
 import Loading from './components/Loading';
 import * as Font from 'expo-font';
 import React, {useState, useEffect, Fragment} from 'react';
-import {View, SafeAreaView, StyleSheet, LogBox} from "react-native";
+import {StyleSheet, LogBox} from "react-native";
 
 export default function App({style = {}}) {
     LogBox.ignoreLogs(['Sending']); //Sending 로그창 제외
@@ -55,16 +55,7 @@ export default function App({style = {}}) {
     return (
         <Fragment>
             <NavigationContainer>
-            {!safeAreaViewNo && <SafeAreaView style={dynamicStyle.container_top}/>}
-            {!safeAreaViewNo ?
-                <>
-                    <SafeAreaView style={styles.container_bottom}>
-                            <Footer safeAreaView={SetsafeAreaViewNo}/>
-                    </SafeAreaView>
-                </>
-                :
                 <Footer safeAreaView={SetsafeAreaViewNo}/>
-            }
             </NavigationContainer>
         </Fragment>
     );
