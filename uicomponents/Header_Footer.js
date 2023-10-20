@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Image, View, Text, StyleSheet, Animated} from 'react-native';
+import {Image, View, Text, StyleSheet, SafeAreaView} from 'react-native';
 import {Ionicons, MaterialIcons} from '@expo/vector-icons';
 import {useNavigationState} from "@react-navigation/native";
 import MychatScreen from "../components/Map";
@@ -26,7 +26,7 @@ const commonOptions = {
     headerShown: true,
     headerStyle: {
         backgroundColor: '#eaeaea',
-        borderStyle:'solid',
+        borderStyle: 'solid',
         shadowColor: '#c2c2c2',
         shadowOffset: {
             width: 0,
@@ -37,12 +37,12 @@ const commonOptions = {
         elevation: 3,
     },
     headerTintColor: '#575757',
-    headerTitleStyle:{
-        fontFamily:'mainFont',
+    headerTitleStyle: {
+        fontFamily: 'mainFont',
     },
-    headerBackTitleStyle:{
-        fontSize:12,
-        fontFamily:'mainFont',
+    headerBackTitleStyle: {
+        fontSize: 12,
+        fontFamily: 'mainFont',
     },
     headerBackImage: () => <MaterialIcons name="navigate-before" style={styles.backIcon}/>,
 };
@@ -67,6 +67,7 @@ function SettingsStack() {
 export default function FooterComponent({safeAreaView}) {
     const routeState = useNavigationState(state => state); // 현재 선택 중인 navigation
     const [isTitle, setIsTitle] = useState(false); //타이블 보이기/숨기기
+    const [isTitleColor, setIsTitleColor] = useState('#ffb931'); //타이블 보이기/숨기기
 
     useEffect(() => {
         if (routeState !== undefined) {
@@ -75,28 +76,34 @@ export default function FooterComponent({safeAreaView}) {
                 case 'Home':
                     setIsTitle(true);
                     safeAreaView(false, true);
+                    setIsTitleColor('#ffb931');
                     break;
                 case 'MychatScreen':
                     setIsTitle(false);
                     safeAreaView(true, false);
+                    setIsTitleColor('#eaeaea');
                     break;
                 case 'MychatScreen2':
                     setIsTitle(false);
                     safeAreaView(true, false);
+                    setIsTitleColor('#eaeaea');
                     break;
                 case 'MyPage':
                     setIsTitle(false);
                     safeAreaView(false, false);
+                    setIsTitleColor('#eaeaea');
                     break;
                 case 'Settings':
                     setIsTitle(false);
                     safeAreaView(false, false);
+                    setIsTitleColor('white');
                     break;
             }
         } else {
             // 초기 라우트 이름이 undefined일 때의 처리
             setIsTitle(true);
             safeAreaView(false, true);
+            setIsTitleColor('#ffb931');
         }
     }, [routeState]);
 
@@ -117,94 +124,109 @@ export default function FooterComponent({safeAreaView}) {
             elevation: 3,
             zIndex: 2,
         },
+        ios_bar_top: {
+            flex: 0,
+            backgroundColor: isTitleColor,
+        },
+        ios_bar: {
+            flex: 1,
+            backgroundColor: 'white',
+        },
     });
 
     return (
-        <View style={styles.content_title_back}>
-            {isTitle && <View style={dynamicStyle.content_title}>
-                <Image style={styles.logo}
-                       source={require('../assets/img/logo_black_only_text.png')} resizeMode="contain"/>
-            </View>}
-            <Tab.Navigator
-                initialRouteName="Home"
-                screenOptions={{
-                    tabBarActiveTintColor: 'black',
-                    tabBarInactiveTintColor: 'gray',
-                    tabBarStyle: {
-                        position: "absolute",
-                        bottom: 0,
-                        backgroundColor: '#fff',
-                        paddingTop: 10,
-                        borderTopLeftRadius: 20,
-                        borderTopRightRadius: 20,
-                        shadowColor: '#484848',
-                        shadowOffset: {
-                            width: 0,
-                            height: -6,
-                        },
-                        shadowOpacity: 0.08,
-                        shadowRadius: 4,
-                        elevation: 3,
-                    },
-                    tabBarLabelStyle: {
-                        fontSize: 10,
-                        fontWeight: 'bold',
-                        fontFamily: 'mainFont',
-                    },
-                }}
-            >
-                <Tab.Screen
-                    name="MychatScreen"
-                    component={MychatScreen}
-                    options={{
-                        tabBarIcon: ({color, focused}) => (
-                            <Ionicons name={focused ? "map" : "map-outline"} size={20} color={color}/>
-                        ),
-                        tabBarLabel: '지도', headerShown: false
-                    }}
-                />
-                <Tab.Screen
-                    name="MychatScreen2"
-                    component={MychatScreen2}
-                    options={{
-                        tabBarIcon: ({color, focused}) => (
-                            <Ionicons name={focused ? "map" : "map-outline"} size={20} color={color}/>
-                        ),
-                        tabBarLabel: '밀집도', headerShown: false
-                    }}
-                />
-                <Tab.Screen
-                    name="Home"
-                    component={Home}
-                    options={{
-                        tabBarIcon: ({color, focused}) => (
-                            <Ionicons name={focused ? "home" : "home-outline"} size={20} color={color}/>
-                        ),
-                        tabBarLabel: '홈', headerShown: false
-                    }}
-                />
-                <Tab.Screen
-                    name="MyPage"
-                    component={MyPage}
-                    options={{
-                        tabBarIcon: ({color, focused}) => (
-                            <Ionicons name={focused ? "person" : "person-outline"} size={20} color={color}/>
-                        ),
-                        tabBarLabel: '마이페이지', headerShown: false
-                    }}
-                />
-                <Tab.Screen
-                    name="Settings"
-                    component={SettingsStack}
-                    options={{
-                        tabBarIcon: ({color, focused}) => (
-                            <Ionicons name={focused ? "settings" : "settings-outline"} size={20} color={color}/>
-                        ),
-                        tabBarLabel: '설정', headerShown: false
-                    }}
-                />
-            </Tab.Navigator>
-        </View>
+        <>
+            <SafeAreaView style={dynamicStyle.ios_bar_top}></SafeAreaView>
+            <SafeAreaView style={dynamicStyle.ios_bar}>
+                <View style={styles.content_title_back}>
+                    {
+                        isTitle && <View style={dynamicStyle.content_title}>
+                            <Image style={styles.logo}
+                                   source={require('../assets/img/logo_black_only_text.png')} resizeMode="contain"/>
+                        </View>
+                    }
+                    <Tab.Navigator
+                        initialRouteName="Home"
+                        screenOptions={{
+                            tabBarActiveTintColor: 'black',
+                            tabBarInactiveTintColor: 'gray',
+                            tabBarStyle: {
+                                position: "absolute",
+                                bottom: 0,
+                                backgroundColor: '#fff',
+                                paddingTop: 10,
+                                borderTopLeftRadius: 20,
+                                borderTopRightRadius: 20,
+                                shadowColor: '#484848',
+                                shadowOffset: {
+                                    width: 0,
+                                    height: -6,
+                                },
+                                shadowOpacity: 0.08,
+                                shadowRadius: 4,
+                                elevation: 3,
+                            },
+                            tabBarLabelStyle: {
+                                fontSize: 10,
+                                fontWeight: 'bold',
+                                fontFamily: 'mainFont',
+                            },
+                        }}
+                    >
+                        <Tab.Screen
+                            name="MychatScreen"
+                            component={MychatScreen}
+                            options={{
+                                tabBarIcon: ({color, focused}) => (
+                                    <Ionicons name={focused ? "map" : "map-outline"} size={20} color={color}/>
+                                ),
+                                tabBarLabel: '지도', headerShown: false
+                            }}
+                        />
+                        <Tab.Screen
+                            name="MychatScreen2"
+                            component={MychatScreen2}
+                            options={{
+                                tabBarIcon: ({color, focused}) => (
+                                    <Ionicons name={focused ? "map" : "map-outline"} size={20} color={color}/>
+                                ),
+                                tabBarLabel: '밀집도', headerShown: false
+                            }}
+                        />
+                        <Tab.Screen
+                            name="Home"
+                            component={Home}
+                            options={{
+                                tabBarIcon: ({color, focused}) => (
+                                    <Ionicons name={focused ? "home" : "home-outline"} size={20} color={color}/>
+                                ),
+                                tabBarLabel: '홈', headerShown: false
+                            }}
+                        />
+                        <Tab.Screen
+                            name="MyPage"
+                            component={MyPage}
+                            options={{
+                                tabBarIcon: ({color, focused}) => (
+                                    <Ionicons name={focused ? "person" : "person-outline"} size={20} color={color}/>
+                                ),
+                                tabBarLabel: '마이페이지', headerShown: false
+                            }}
+                        />
+                        <Tab.Screen
+                            name="Settings"
+                            component={SettingsStack}
+                            options={{
+                                tabBarIcon: ({color, focused}) => (
+                                    <Ionicons name={focused ? "settings" : "settings-outline"} size={20} color={color}/>
+                                ),
+                                tabBarLabel: '설정', headerShown: false
+                            }}
+                        />
+                    </Tab.Navigator>
+                </View>
+            </SafeAreaView>
+        </>
     );
 }
 
@@ -219,8 +241,8 @@ const styles = StyleSheet.create({
         marginTop: 8,
     },
     backIcon: {
-        marginLeft:10,
-        fontSize:20,
-        color:'#575757'
+        marginLeft: 10,
+        fontSize: 20,
+        color: '#575757'
     }
 });
