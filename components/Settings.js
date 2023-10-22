@@ -55,7 +55,7 @@ export default function Settings() {
                         onPress={() => navigation.navigate('공지사항')}
                         style={styles.settings_option_menu}
                     >
-                        <Entypo name="megaphone" style={[styles.settings_option_menu_text_icon, {fontSize: 17}]}/>
+                        <Entypo name="megaphone" style={styles.settings_option_menu_text_icon}/>
                         <Text style={styles.settings_option_menu_text}>공지사항</Text>
                         <MaterialIcons
                             name="navigate-next"
@@ -66,7 +66,7 @@ export default function Settings() {
                         onPress={() => navigation.navigate('문의사항')}
                         style={styles.settings_option_menu}
                     >
-                        <Entypo name="help-with-circle" style={[styles.settings_option_menu_text_icon, {fontSize: 17}]}/>
+                        <Entypo name="help-with-circle" style={styles.settings_option_menu_text_icon}/>
                         <Text style={styles.settings_option_menu_text}>문의사항</Text>
                         <MaterialIcons
                             name="navigate-next"
@@ -80,7 +80,7 @@ export default function Settings() {
                         onPress={() => navigation.navigate('대피소 알림 설정')}
                         style={styles.settings_option_menu}
                     >
-                        <Ionicons  name="notifications-circle" style={styles.settings_option_menu_text_icon}/>
+                        <Entypo name="bell" style={styles.settings_option_menu_text_icon}/>
                         <Text style={styles.settings_option_menu_text}>대피소 알림 설정</Text>
                         <MaterialIcons
                             name="navigate-next"
@@ -91,7 +91,7 @@ export default function Settings() {
                         onPress={() => navigation.navigate('AED 알림 설정')}
                         style={styles.settings_option_menu}
                     >
-                        <Ionicons  name="notifications-circle" style={styles.settings_option_menu_text_icon}/>
+                        <Entypo name="bell" style={styles.settings_option_menu_text_icon}/>
                         <Text style={styles.settings_option_menu_text}>AED 알림 설정</Text>
                         <MaterialIcons
                             name="navigate-next"
@@ -102,7 +102,7 @@ export default function Settings() {
                         onPress={() => navigation.navigate('소화기 알림 설정')}
                         style={styles.settings_option_menu}
                     >
-                        <Ionicons  name="notifications-circle" style={styles.settings_option_menu_text_icon}/>
+                        <Entypo name="bell" style={styles.settings_option_menu_text_icon}/>
                         <Text style={styles.settings_option_menu_text}>소화기 알림 설정</Text>
                         <MaterialIcons
                             name="navigate-next"
@@ -113,7 +113,7 @@ export default function Settings() {
                         onPress={() => navigation.navigate('재난 문자 필터링 설정')}
                         style={styles.settings_option_menu}
                     >
-                        <Entypo name="mail-with-circle" style={[styles.settings_option_menu_text_icon, {fontSize: 17}]}/>
+                        <Entypo name="mail-with-circle" style={styles.settings_option_menu_text_icon}/>
                         <Text style={styles.settings_option_menu_text}>재난 문자 필터링 설정</Text>
                         <MaterialIcons
                             name="navigate-next"
@@ -127,7 +127,7 @@ export default function Settings() {
                         onPress={() => navigation.navigate('관심 지역 설정')}
                         style={styles.settings_option_menu}
                     >
-                        <MaterialCommunityIcons name="pencil" style={styles.settings_option_menu_text_icon}/>
+                        <Entypo name="address" style={styles.settings_option_menu_text_icon}/>
                         <Text style={styles.settings_option_menu_text}>관심 지역 설정</Text>
                         <MaterialIcons
                             name="navigate-next"

@@ -45,13 +45,6 @@ export default function App({style = {}}) {
         return <Loading isLoadingAnimation={isLoadingAnimation}/>; // 만약 폰트가 아직 로드되지 않았거나 초기 로딩 중이라면 Loading화면 출력
     }
 
-    const dynamicStyle = StyleSheet.create({
-        container_top: {
-            flex: 0,
-            backgroundColor: safeAreaViewColor ?'#ffb931':'#eaeaea',
-        },
-    });
-
     return (
         <Fragment>
             <NavigationContainer>

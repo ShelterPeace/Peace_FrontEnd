@@ -4,11 +4,11 @@ export default StyleSheet.create({
     container_in: {
         width: '100%',
         height: '100%',
-        backgroundColor: '#eaeaea',
+        backgroundColor: '#fafafa',
     },
     content_box_1: {
         flex: 1,
-        backgroundColor: '#eaeaea',
+        backgroundColor: '#fafafa',
         alignItems: 'center',
         justifyContent: 'flex-start',
     },
