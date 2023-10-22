@@ -144,7 +144,7 @@ export default StyleSheet.create({
         flexDirection: "row",
     },
     settings_option_menu_text_icon:{
-        fontSize: 20,
+        fontSize: 16,
         color: '#818181',
         marginLeft: 30,
     },

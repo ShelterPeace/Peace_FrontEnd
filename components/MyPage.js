@@ -23,11 +23,11 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         height: '100%',
-        backgroundColor: '#eaeaea',
+        backgroundColor: '#fafafa',
     },
     container_in: {
         flex: 1,
-        backgroundColor: '#eaeaea',
+        backgroundColor: '#fafafa',
         padding: 15,
     },
 });

@@ -25,7 +25,7 @@ const Tab = createBottomTabNavigator();
 const commonOptions = {
     headerShown: true,
     headerStyle: {
-        backgroundColor: '#eaeaea',
+        backgroundColor: '#fafafa',
         borderStyle: 'solid',
         shadowColor: '#c2c2c2',
         shadowOffset: {
@@ -81,17 +81,17 @@ export default function FooterComponent({safeAreaView}) {
                 case 'MychatScreen':
                     setIsTitle(false);
                     safeAreaView(true, false);
-                    setIsTitleColor('#eaeaea');
+                    setIsTitleColor('#fafafa');
                     break;
                 case 'MychatScreen2':
                     setIsTitle(false);
                     safeAreaView(true, false);
-                    setIsTitleColor('#eaeaea');
+                    setIsTitleColor('#fafafa');
                     break;
                 case 'MyPage':
                     setIsTitle(false);
                     safeAreaView(false, false);
-                    setIsTitleColor('#eaeaea');
+                    setIsTitleColor('#fafafa');
                     break;
                 case 'Settings':
                     setIsTitle(false);
@@ -233,9 +233,10 @@ export default function FooterComponent({safeAreaView}) {
 const styles = StyleSheet.create({
     content_title_back: {
         flex: 1,
-        backgroundColor: '#eaeaea',
+        backgroundColor: '#fafafa',
     },
     logo: {
+
         width: 80,
         height: 20,
         marginTop: 8,
