@@ -52,18 +52,18 @@ export default function HomeScreen({style = {}}) {
                             </View>
                         </View>
                         <View style={{height: 15}}></View>
-                        <View style={styles.content_weather_box_1}>
-                            <View style={[styles.content_weather_box_2, {paddingRight: 7.5}]}>
-                                <View style={styles.content_weather_box_3}>
-                                    <Weather/>
-                                </View>
-                            </View>
-                            <View style={[styles.content_weather_box_2, {paddingLeft: 7.5}]}>
-                                <View style={styles.content_weather_box_3}>
-                                    <Weather_interest/>
-                                </View>
-                            </View>
-                        </View>
+                        {/*<View style={styles.content_weather_box_1}>*/}
+                        {/*    <View style={[styles.content_weather_box_2, {paddingRight: 7.5}]}>*/}
+                        {/*        <View style={styles.content_weather_box_3}>*/}
+                        {/*            <Weather/>*/}
+                        {/*        </View>*/}
+                        {/*    </View>*/}
+                        {/*    <View style={[styles.content_weather_box_2, {paddingLeft: 7.5}]}>*/}
+                        {/*        <View style={styles.content_weather_box_3}>*/}
+                        {/*            <Weather_interest/>*/}
+                        {/*        </View>*/}
+                        {/*    </View>*/}
+                        {/*</View>*/}
                         <View style={{height: 65}}></View>
                     </View>
                 </ScrollView>
