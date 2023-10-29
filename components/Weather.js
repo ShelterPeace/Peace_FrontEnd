@@ -3,8 +3,8 @@ import {
     View,
     Text,
 } from 'react-native';
-import Weather_interest from './Home_components/Weather_interest';
-import Weather_main from './Home_components/Weather';
+import Weather_interest from './Weather_components/Weather_interest';
+import Weather_main from './Weather_components/Weather';
 import styles from '../styles/Weather/WeatherStyles';
 
 export default function Weather({navigation}) {
