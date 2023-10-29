@@ -4,14 +4,16 @@ export default StyleSheet.create({
     container: {
         width: '100%',
         height: '100%',
-        backgroundColor: '#fafafa',
+        backgroundColor: '#f3f3f3',
     },
     settings_option_mypage_container: {
-        height: 120,
+        backgroundColor:'#fff',
+        height: 110,
         justifyContent: 'center',
         alignItems: 'flex-start',
-        backgroundColor: 'white',
         flexDirection: 'row',
+        borderBottomRightRadius:15,
+        borderBottomLeftRadius:15,
 
         borderTopWidth: 0,
 
@@ -39,7 +41,7 @@ export default StyleSheet.create({
         borderStyle: 'solid',
         borderWidth: 4,
 
-        shadowColor: '#676767',
+        shadowColor: '#171717',
         shadowOffset: {
             width: 0,
             height: 0,
@@ -69,7 +71,6 @@ export default StyleSheet.create({
         fontSize: 14,
     },
     settings_option_mypage_profile_content: {
-        backgroundColor: 'white',
         flex: 1,
         height: '100%',
     },
@@ -100,17 +101,17 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 7,
-        borderColor:'#c2c2c2',
+        borderColor:'#9d9d9d',
         borderWidth:1,
     },
     settings_option_mypage_profile_button_user_update_text:{
         fontSize:12,
-        color:'#969696',
+        color:'#5e5e5e',
         fontFamily:'mainFont'
     },
     container_in: {
         flex: 1,
-        backgroundColor: '#fafafa',
+        backgroundColor: '#f3f3f3',
         padding: 15,
     },
     settings_option_title_text: {
@@ -138,21 +139,21 @@ export default StyleSheet.create({
     },
     settings_option_menu: {
         width: '100%',
-        height: 40,
+        height: 55,
         justifyContent: 'flex-start',
         alignItems: 'center',
         flexDirection: "row",
     },
     settings_option_menu_text_icon:{
         fontSize: 16,
-        color: '#818181',
+        color: '#000',
         marginLeft: 30,
     },
     settings_option_menu_text: {
-        fontSize: 14,
+        fontSize: 16,
         fontFamily: "mainFont",
-        marginLeft: 5,
-        color: '#818181',
+        marginLeft: 10,
+        color: '#5e5e5e',
         lineHeight:20,
     },
     settings_option_menu_icon: {

@@ -42,20 +42,17 @@ export default StyleSheet.create({
     content_news: {
         flexDirection: 'row',
         flex: 1,
-        backgroundColor: '#f3f3f3',
         justifyContent: 'center',
-        borderStyle: 'solid',
-        borderColor: '#b7b7b7',
-        borderWidth: 0.2,
         borderRadius: 10,
 
-        shadowColor: '#969696',
+        backgroundColor: 'white',
+        shadowColor: '#e0e0e0',
         shadowOffset: {
             width: 0,
-            height: 0.5, // 음수 값을 사용하면 그림자가 위로 올라갑니다
+            height: 0.5,
         },
-        shadowOpacity: 0.5, // CSS의 box-shadow에서 alpha 값에 해당합니다
-        shadowRadius: 2, // blur radius에 해당합니다
+        shadowOpacity: 0.5,
+        shadowRadius: 2,
         elevation: 3,
     },
     content_news_imgDiv: {

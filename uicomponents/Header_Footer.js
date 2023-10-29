@@ -5,11 +5,12 @@ import {useNavigationState} from "@react-navigation/native";
 import MychatScreen from "../components/Map";
 import MychatScreen2 from "../components/Map2";
 import Home from "../components/Home";
-import MyPage from "../components/MyPage";
+import Weather from "../components/Weather";
 import Settings from "../components/Settings";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {createStackNavigator} from '@react-navigation/stack';
-import Notice from '../components/Settings_components/Notice';
+import Notice from '../components/Settings_components/Notice/Notice'
+import NoticeDetail from '../components/Settings_components/Notice/NoticeDetail'
 import Inquiry from "../components/Settings_components/Inquiry";
 import Shelter_Settings from "../components/Settings_components/Shelter_Settings";
 import AED_Settings from "../components/Settings_components/AED_Settings";
@@ -25,9 +26,9 @@ const Tab = createBottomTabNavigator();
 const commonOptions = {
     headerShown: true,
     headerStyle: {
-        backgroundColor: '#fafafa',
+        backgroundColor: 'white',
         borderStyle: 'solid',
-        shadowColor: '#c2c2c2',
+        shadowColor: '#e0e0e0',
         shadowOffset: {
             width: 0,
             height: 1,
@@ -39,9 +40,12 @@ const commonOptions = {
     headerTintColor: '#575757',
     headerTitleStyle: {
         fontFamily: 'mainFont',
+        fontSize:16,
+        width:180,
+        textAlign:"center",
     },
     headerBackTitleStyle: {
-        fontSize: 12,
+        fontSize: 11,
         fontFamily: 'mainFont',
     },
     headerBackImage: () => <MaterialIcons name="navigate-before" style={styles.backIcon}/>,
@@ -54,6 +58,14 @@ function SettingsStack() {
                 headerShown: false
             }}/>
             <Stack.Screen name="공지사항" component={Notice} options={commonOptions}/>
+            <Stack.Screen
+                name="NoticeDetail"
+                component={NoticeDetail}
+                options={({ route }) => ({
+                    ...commonOptions,
+                    title: route.params.notice.title
+                })}
+            />
             <Stack.Screen name="문의사항" component={Inquiry} options={commonOptions}/>
             <Stack.Screen name="대피소 알림 설정" component={Shelter_Settings} options={commonOptions}/>
             <Stack.Screen name="AED 알림 설정" component={AED_Settings} options={commonOptions}/>
@@ -81,17 +93,17 @@ export default function FooterComponent({safeAreaView}) {
                 case 'MychatScreen':
                     setIsTitle(false);
                     safeAreaView(true, false);
-                    setIsTitleColor('#fafafa');
+                    setIsTitleColor('#f3f3f3');
                     break;
                 case 'MychatScreen2':
                     setIsTitle(false);
                     safeAreaView(true, false);
-                    setIsTitleColor('#fafafa');
+                    setIsTitleColor('#f3f3f3');
                     break;
-                case 'MyPage':
+                case 'Weather':
                     setIsTitle(false);
                     safeAreaView(false, false);
-                    setIsTitleColor('#fafafa');
+                    setIsTitleColor('#f3f3f3');
                     break;
                 case 'Settings':
                     setIsTitle(false);
@@ -204,13 +216,13 @@ export default function FooterComponent({safeAreaView}) {
                             }}
                         />
                         <Tab.Screen
-                            name="MyPage"
-                            component={MyPage}
+                            name="Weather"
+                            component={Weather}
                             options={{
                                 tabBarIcon: ({color, focused}) => (
-                                    <Ionicons name={focused ? "person" : "person-outline"} size={20} color={color}/>
+                                    <Ionicons name={focused ? "sunny" : "sunny-outline"} size={20} color={color}/>
                                 ),
-                                tabBarLabel: '마이페이지', headerShown: false
+                                tabBarLabel: '날씨', headerShown: false
                             }}
                         />
                         <Tab.Screen
@@ -233,17 +245,16 @@ export default function FooterComponent({safeAreaView}) {
 const styles = StyleSheet.create({
     content_title_back: {
         flex: 1,
-        backgroundColor: '#fafafa',
+        backgroundColor: '#f3f3f3',
     },
     logo: {
-
         width: 80,
         height: 20,
         marginTop: 8,
     },
     backIcon: {
         marginLeft: 10,
-        fontSize: 20,
+        fontSize: 17,
         color: '#575757'
     }
 });

@@ -1,32 +1,38 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+    container_header:{
+        backgroundColor:'#f3f3f3',
+        height: 110,
+    },
+    container_header_bell:{
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    container_header_bell_text:{
+        fontSize:20,
+        fontFamily:'mainFont',
+    },
+    container: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#f3f3f3',
+    },
     container_in: {
-        width: '100%',
-        height: '100%',
-        backgroundColor: '#f3f3f3',
-    },
-    content_box_1: {
         flex: 1,
         backgroundColor: '#f3f3f3',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
+        padding: 15,
     },
-    content_box_2: {
+    content_weather_box_1: {
         width: '100%',
-        flex: 1,
+        height: 170,
+        flexDirection: "row",
     },
-    viewScroll: {
-        width: '100%',
+    content_weather_box_2: {
+        width: '50%',
         height: '100%',
     },
-    content_main_box_1: {
-        width: '100%',
-        height: 130,
-        paddingLeft: 15,
-        paddingRight: 15,
-    },
-    content_main_box_2: {
+    content_weather_box_3: {
         width: '100%',
         height: '100%',
         backgroundColor: 'white',

@@ -4,8 +4,6 @@ import News from './Home_components/News';
 import Shelter from './Home_components/Shelter';
 import Aed from './Home_components/Aed';
 import Fire from './Home_components/Fire';
-import Weather from './Home_components/Weather';
-import Weather_interest from './Home_components/Weather_interest';
 import styles from '../styles/Home/HomeStyles';
 import React, {useState, useEffect} from 'react';
 
@@ -52,18 +50,18 @@ export default function HomeScreen({style = {}}) {
                             </View>
                         </View>
                         <View style={{height: 15}}></View>
-                        <View style={styles.content_weather_box_1}>
-                            <View style={[styles.content_weather_box_2, {paddingRight: 7.5}]}>
-                                <View style={styles.content_weather_box_3}>
-                                    <Weather/>
-                                </View>
-                            </View>
-                            <View style={[styles.content_weather_box_2, {paddingLeft: 7.5}]}>
-                                <View style={styles.content_weather_box_3}>
-                                    <Weather_interest/>
-                                </View>
-                            </View>
-                        </View>
+                        {/*<View style={styles.content_weather_box_1}>*/}
+                        {/*    <View style={[styles.content_weather_box_2, {paddingRight: 7.5}]}>*/}
+                        {/*        <View style={styles.content_weather_box_3}>*/}
+                        {/*            <Weather/>*/}
+                        {/*        </View>*/}
+                        {/*    </View>*/}
+                        {/*    <View style={[styles.content_weather_box_2, {paddingLeft: 7.5}]}>*/}
+                        {/*        <View style={styles.content_weather_box_3}>*/}
+                        {/*            <Weather_interest/>*/}
+                        {/*        </View>*/}
+                        {/*    </View>*/}
+                        {/*</View>*/}
                         <View style={{height: 65}}></View>
                     </View>
                 </ScrollView>

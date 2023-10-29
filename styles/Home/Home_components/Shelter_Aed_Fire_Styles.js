@@ -37,7 +37,7 @@ export default StyleSheet.create({
     },
     content_div_1_2_content_1_1: {
         flex: 1,
-        backgroundColor: "#e3e3e3",
+        backgroundColor: "#f3f3f3",
         borderRadius: 10,
     },
     content_div_1_2_content_1_1_1: {
@@ -98,7 +98,7 @@ export default StyleSheet.create({
     },
     content_div_1_2_content_2_1: {
         flex: 1,
-        backgroundColor: "#e3e3e3",
+        backgroundColor: "#f3f3f3",
         borderRadius: 10,
         paddingLeft: 10,
         paddingRight: 10,
