@@ -14,8 +14,6 @@ export default function Weather({navigation}) {
                 <View style={styles.container_header_bell}>
                     <Text style={styles.container_header_bell_text}>오늘은 뜨끈한 국밥 먹기 좋은날 ~</Text>
                 </View>
-
-
             </View>
             <View style={styles.container_in}>
                 <View style={styles.content_weather_box_1}>

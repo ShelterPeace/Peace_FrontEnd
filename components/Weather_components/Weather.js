@@ -1,6 +1,6 @@
 import {View, Text, Image} from 'react-native';
-import styles from '../../styles/Home/Home_components/WeatherStyles';
 import React from "react";
+import styles from '../../styles/Weather/WeatherStyles';
 
 export default function Weather() {
 

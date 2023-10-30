@@ -1,6 +1,27 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+    logo: {
+        width: 80,
+        height: 20,
+        marginTop: 8,
+    },
+    content_title: {
+        width: '100%',
+        height: 45,
+        backgroundColor: '#ffb931',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+
+        shadowColor: '#969696',
+        shadowOffset: {width: 0, height: 7},
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        elevation: 3,
+        zIndex: 2,
+    },
     container_in: {
         width: '100%',
         height: '100%',
