@@ -40,9 +40,9 @@ const commonOptions = {
     headerTintColor: '#575757',
     headerTitleStyle: {
         fontFamily: 'mainFont',
-        fontSize:16,
-        width:180,
-        textAlign:"center",
+        fontSize: 16,
+        width: 180,
+        textAlign: "center",
     },
     headerBackTitleStyle: {
         fontSize: 11,
@@ -61,7 +61,7 @@ function SettingsStack() {
             <Stack.Screen
                 name="NoticeDetail"
                 component={NoticeDetail}
-                options={({ route }) => ({
+                options={({route}) => ({
                     ...commonOptions,
                     title: route.params.notice.title
                 })}
@@ -86,27 +86,27 @@ export default function FooterComponent({safeAreaView}) {
             const routeName = routeState.routes[routeState.index]?.name;
             switch (routeName) {
                 case 'Home':
-                    setIsTitle(true);
+                    setIsTitle('Home');
                     safeAreaView(false, true);
                     setIsTitleColor('#ffb931');
                     break;
                 case 'MychatScreen':
-                    setIsTitle(false);
+                    setIsTitle('MychatScreen');
                     safeAreaView(true, false);
                     setIsTitleColor('#f3f3f3');
                     break;
                 case 'MychatScreen2':
-                    setIsTitle(false);
+                    setIsTitle('MychatScreen2');
                     safeAreaView(true, false);
                     setIsTitleColor('#f3f3f3');
                     break;
                 case 'Weather':
-                    setIsTitle(false);
+                    setIsTitle('Weather');
                     safeAreaView(false, false);
-                    setIsTitleColor('#f3f3f3');
+                    setIsTitleColor('rgba(243,243,243,0)');
                     break;
                 case 'Settings':
-                    setIsTitle(false);
+                    setIsTitle('Settings');
                     safeAreaView(false, false);
                     setIsTitleColor('white');
                     break;
@@ -136,108 +136,205 @@ export default function FooterComponent({safeAreaView}) {
             elevation: 3,
             zIndex: 2,
         },
-        ios_bar_top: {
-            flex: 0,
-            backgroundColor: isTitleColor,
-        },
-        ios_bar: {
-            flex: 1,
-            backgroundColor: 'white',
-        },
+
     });
 
     return (
         <>
-            <SafeAreaView style={dynamicStyle.ios_bar_top}></SafeAreaView>
-            <SafeAreaView style={dynamicStyle.ios_bar}>
-                <View style={styles.content_title_back}>
-                    {
-                        isTitle && <View style={dynamicStyle.content_title}>
-                            <Image style={styles.logo}
-                                   source={require('../assets/img/logo_black_only_text.png')} resizeMode="contain"/>
+            {
+                isTitle === 'Home' ?
+                    <>
+                        <SafeAreaView style={dynamicStyle.ios_bar_top}></SafeAreaView>
+                        <SafeAreaView style={dynamicStyle.ios_bar}>
+                            <View style={styles.content_title_back}>
+                                {
+                                    isTitle === 'Home' && <View style={dynamicStyle.content_title}>
+                                        <Image style={styles.logo}
+                                               source={require('../assets/img/logo_black_only_text.png')}
+                                               resizeMode="contain"/>
+                                    </View>
+                                }
+                                <Tab.Navigator
+                                    initialRouteName="Home"
+                                    screenOptions={{
+                                        tabBarActiveTintColor: 'black',
+                                        tabBarInactiveTintColor: 'gray',
+                                        tabBarStyle: {
+                                            position: "absolute",
+                                            bottom: 0,
+                                            backgroundColor: '#fff',
+                                            paddingTop: 10,
+                                            borderTopLeftRadius: 20,
+                                            borderTopRightRadius: 20,
+                                            shadowColor: '#484848',
+                                            shadowOffset: {
+                                                width: 0,
+                                                height: -6,
+                                            },
+                                            shadowOpacity: 0.08,
+                                            shadowRadius: 4,
+                                            elevation: 3,
+                                        },
+                                        tabBarLabelStyle: {
+                                            fontSize: 10,
+                                            fontWeight: 'bold',
+                                            fontFamily: 'mainFont',
+                                        },
+                                    }}
+                                >
+                                    <Tab.Screen
+                                        name="MychatScreen"
+                                        component={MychatScreen}
+                                        options={{
+                                            tabBarIcon: ({color, focused}) => (
+                                                <Ionicons name={focused ? "map" : "map-outline"} size={20}
+                                                          color={color}/>
+                                            ),
+                                            tabBarLabel: '지도', headerShown: false
+                                        }}
+                                    />
+                                    <Tab.Screen
+                                        name="MychatScreen2"
+                                        component={MychatScreen2}
+                                        options={{
+                                            tabBarIcon: ({color, focused}) => (
+                                                <Ionicons name={focused ? "map" : "map-outline"} size={20}
+                                                          color={color}/>
+                                            ),
+                                            tabBarLabel: '밀집도', headerShown: false
+                                        }}
+                                    />
+                                    <Tab.Screen
+                                        name="Home"
+                                        component={Home}
+                                        options={{
+                                            tabBarIcon: ({color, focused}) => (
+                                                <Ionicons name={focused ? "home" : "home-outline"} size={20}
+                                                          color={color}/>
+                                            ),
+                                            tabBarLabel: '홈', headerShown: false
+                                        }}
+                                    />
+                                    <Tab.Screen
+                                        name="Weather"
+                                        component={Weather}
+                                        options={{
+                                            tabBarIcon: ({color, focused}) => (
+                                                <Ionicons name={focused ? "sunny" : "sunny-outline"} size={20}
+                                                          color={color}/>
+                                            ),
+                                            tabBarLabel: '날씨', headerShown: false
+                                        }}
+                                    />
+                                    <Tab.Screen
+                                        name="Settings"
+                                        component={SettingsStack}
+                                        options={{
+                                            tabBarIcon: ({color, focused}) => (
+                                                <Ionicons name={focused ? "settings" : "settings-outline"} size={20}
+                                                          color={color}/>
+                                            ),
+                                            tabBarLabel: '설정', headerShown: false
+                                        }}
+                                    />
+                                </Tab.Navigator>
+                            </View>
+                        </SafeAreaView>
+                    </>
+                    :
+                    <>
+                        <View style={styles.content_title_back}>
+                            {
+                                isTitle === 'Home' && <View style={dynamicStyle.content_title}>
+                                    <Image style={styles.logo}
+                                           source={require('../assets/img/logo_black_only_text.png')} resizeMode="contain"/>
+                                </View>
+                            }
+                            <Tab.Navigator
+                                initialRouteName="Home"
+                                screenOptions={{
+                                    tabBarActiveTintColor: 'black',
+                                    tabBarInactiveTintColor: 'gray',
+                                    tabBarStyle: {
+                                        position: "absolute",
+                                        bottom: 0,
+                                        backgroundColor: '#fff',
+                                        paddingTop: 10,
+                                        borderTopLeftRadius: 20,
+                                        borderTopRightRadius: 20,
+                                        shadowColor: '#484848',
+                                        shadowOffset: {
+                                            width: 0,
+                                            height: -6,
+                                        },
+                                        shadowOpacity: 0.08,
+                                        shadowRadius: 4,
+                                        elevation: 3,
+                                    },
+                                    tabBarLabelStyle: {
+                                        fontSize: 10,
+                                        fontWeight: 'bold',
+                                        fontFamily: 'mainFont',
+                                    },
+                                }}
+                            >
+                                <Tab.Screen
+                                    name="MychatScreen"
+                                    component={MychatScreen}
+                                    options={{
+                                        tabBarIcon: ({color, focused}) => (
+                                            <Ionicons name={focused ? "map" : "map-outline"} size={20} color={color}/>
+                                        ),
+                                        tabBarLabel: '지도', headerShown: false
+                                    }}
+                                />
+                                <Tab.Screen
+                                    name="MychatScreen2"
+                                    component={MychatScreen2}
+                                    options={{
+                                        tabBarIcon: ({color, focused}) => (
+                                            <Ionicons name={focused ? "map" : "map-outline"} size={20} color={color}/>
+                                        ),
+                                        tabBarLabel: '밀집도', headerShown: false
+                                    }}
+                                />
+                                <Tab.Screen
+                                    name="Home"
+                                    component={Home}
+                                    options={{
+                                        tabBarIcon: ({color, focused}) => (
+                                            <Ionicons name={focused ? "home" : "home-outline"} size={20} color={color}/>
+                                        ),
+                                        tabBarLabel: '홈', headerShown: false
+                                    }}
+                                />
+                                <Tab.Screen
+                                    name="Weather"
+                                    component={Weather}
+                                    options={{
+                                        tabBarIcon: ({color, focused}) => (
+                                            <Ionicons name={focused ? "sunny" : "sunny-outline"} size={20}
+                                                      color={color}/>
+                                        ),
+                                        tabBarLabel: '날씨', headerShown: false
+                                    }}
+                                />
+                                <Tab.Screen
+                                    name="Settings"
+                                    component={SettingsStack}
+                                    options={{
+                                        tabBarIcon: ({color, focused}) => (
+                                            <Ionicons name={focused ? "settings" : "settings-outline"} size={20}
+                                                      color={color}/>
+                                        ),
+                                        tabBarLabel: '설정', headerShown: false
+                                    }}
+                                />
+                            </Tab.Navigator>
                         </View>
-                    }
-                    <Tab.Navigator
-                        initialRouteName="Home"
-                        screenOptions={{
-                            tabBarActiveTintColor: 'black',
-                            tabBarInactiveTintColor: 'gray',
-                            tabBarStyle: {
-                                position: "absolute",
-                                bottom: 0,
-                                backgroundColor: '#fff',
-                                paddingTop: 10,
-                                borderTopLeftRadius: 20,
-                                borderTopRightRadius: 20,
-                                shadowColor: '#484848',
-                                shadowOffset: {
-                                    width: 0,
-                                    height: -6,
-                                },
-                                shadowOpacity: 0.08,
-                                shadowRadius: 4,
-                                elevation: 3,
-                            },
-                            tabBarLabelStyle: {
-                                fontSize: 10,
-                                fontWeight: 'bold',
-                                fontFamily: 'mainFont',
-                            },
-                        }}
-                    >
-                        <Tab.Screen
-                            name="MychatScreen"
-                            component={MychatScreen}
-                            options={{
-                                tabBarIcon: ({color, focused}) => (
-                                    <Ionicons name={focused ? "map" : "map-outline"} size={20} color={color}/>
-                                ),
-                                tabBarLabel: '지도', headerShown: false
-                            }}
-                        />
-                        <Tab.Screen
-                            name="MychatScreen2"
-                            component={MychatScreen2}
-                            options={{
-                                tabBarIcon: ({color, focused}) => (
-                                    <Ionicons name={focused ? "map" : "map-outline"} size={20} color={color}/>
-                                ),
-                                tabBarLabel: '밀집도', headerShown: false
-                            }}
-                        />
-                        <Tab.Screen
-                            name="Home"
-                            component={Home}
-                            options={{
-                                tabBarIcon: ({color, focused}) => (
-                                    <Ionicons name={focused ? "home" : "home-outline"} size={20} color={color}/>
-                                ),
-                                tabBarLabel: '홈', headerShown: false
-                            }}
-                        />
-                        <Tab.Screen
-                            name="Weather"
-                            component={Weather}
-                            options={{
-                                tabBarIcon: ({color, focused}) => (
-                                    <Ionicons name={focused ? "sunny" : "sunny-outline"} size={20} color={color}/>
-                                ),
-                                tabBarLabel: '날씨', headerShown: false
-                            }}
-                        />
-                        <Tab.Screen
-                            name="Settings"
-                            component={SettingsStack}
-                            options={{
-                                tabBarIcon: ({color, focused}) => (
-                                    <Ionicons name={focused ? "settings" : "settings-outline"} size={20} color={color}/>
-                                ),
-                                tabBarLabel: '설정', headerShown: false
-                            }}
-                        />
-                    </Tab.Navigator>
-                </View>
-            </SafeAreaView>
+                    </>
+            }
+
         </>
     );
 }

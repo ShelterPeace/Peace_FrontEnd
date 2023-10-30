@@ -1,6 +1,6 @@
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
-import styles from '../../styles/Home/Home_components/WeatherStyles';
+import styles from '../../styles/Weather/WeatherStyles';
 import React from "react";
 export default function Weather() {
 

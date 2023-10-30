@@ -30,7 +30,6 @@ export default function MychatScreen2({navigation}) {
 
     return (
         <>
-            <View style={{height: 10, backgroundColor:'#eaeaea'}}/>
             <MapView style={{flex: 1}} region={region}>
                 <Marker
                     coordinate={{
@@ -41,7 +40,6 @@ export default function MychatScreen2({navigation}) {
                     pinColor='black'
                 />
             </MapView>
-            <View style={{height: 70, backgroundColor:'#eaeaea'}}/>
         </>
     );
 }

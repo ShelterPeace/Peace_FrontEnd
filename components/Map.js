@@ -50,12 +50,14 @@ export default function MychatScreen({navigation}) {
   const shelterMarkers = async () => {
     // API 주소 변경
     const apiUrl =
-        'https://apis.data.go.kr/1741000/EmergencyAssemblyArea_Earthquake2/getArea1List?serviceKey=l1%2B1VLJ5U%2BI%2ByRXyHB%2FmTXGXMBz4N7pFSv%2FcjcTFIcXxbUODsvcrXmH7wLoLi3Dplklqs1qMzEiESQ0vnpYB0A%3D%3D&pageNo=1&numOfRows=1000000&type=json';
+        'https://apis.data.go.kr/1741000/EmergencyAssemblyArea_Earthquake2/getArea1List?serviceKey=l1%2B1VLJ5U%2BI%2ByRXyHB%2FmTXGXMBz4N7pFSv%2FcjcTFIcXxbUODsvcrXmH7wLoLi3Dplklqs1qMzEiESQ0vnpYB0A%3D%3D&pageNo=1&numOfRows=5000&type=json';
 
     try {
       console.log(apiUrl)
       const response = await fetch(apiUrl);
+      console.log(response);
       const data = await response.json();
+      console.log(data);
 
       // 데이터 구조 변경에 따른 코드 수정
       const newMarkers = data.EarthquakeOutdoorsShelter[1].row.map(item => ({
